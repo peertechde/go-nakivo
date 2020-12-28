@@ -30,6 +30,7 @@ func NewClient(httpClient *http.Client, address string, port int) (*Client, erro
 		httpClient: httpClient,
 	}
 	client.common.client = client
+	client.Authentication = (*AuthenticationService)(&client.common)
 
 	return client, nil
 }
@@ -38,7 +39,8 @@ type Client struct {
 	baseURL    *url.URL
 	httpClient *http.Client
 
-	common service
+	common         service
+	Authentication *AuthenticationService
 }
 
 type service struct {
