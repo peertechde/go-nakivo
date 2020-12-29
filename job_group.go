@@ -109,19 +109,19 @@ type hvTypeBackupHasRootDiskCount struct {
 
 type transporter struct {
 	// IsAuto indicates if a transporter was assigned automatically
-	IsAuto bool `json:"isauto"`
+	IsAuto bool `json:"isAuto"`
 
 	// UsedAsSource indicates if a transporter used as a source
-	UsedAsSource bool `json:"usedassource"`
+	UsedAsSource bool `json:"usedAsSource"`
 
 	// UsedAsTarget indicates if a transporter used as a target
-	UsedAsTarget bool `json:"usedastarget"`
+	UsedAsTarget bool `json:"usedAsTarget"`
 
 	// Maximum number of jobs supported by a transporter
-	MaxLoadFactor int `json:"maxloadfactor"`
+	MaxLoadFactor int `json:"maxLoadFactor"`
 
 	// Current number of jobs using a transporter
-	CurrentTotalLoad int `json:"currenttotalload"`
+	CurrentTotalLoad int `json:"currentTotalLoad"`
 
 	// Vid of a transporter
 	Vid string `json:"vid"`
@@ -135,7 +135,7 @@ type transporter struct {
 
 type storage struct {
 	// Storage vid
-	Vid string `json:""`
+	Vid string `json:"vid"`
 
 	// Storage display name
 	Name string `json:"name"`
@@ -156,7 +156,7 @@ type storage struct {
 	Online bool `json:"online"`
 
 	// AWS-specific: true if the ebs or ebs snapshot storage is used
-	InfiniteSize bool `json:"infinitesize"`
+	InfiniteSize bool `json:"infiniteSize"`
 
 	// The type of storage
 	Type string `json:"type"`
