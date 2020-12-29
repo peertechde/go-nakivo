@@ -5,11 +5,11 @@ import (
 	"net/http"
 )
 
-type JobInfo struct {
-	Children []jobInfo `json:"children"`
+type Jobs struct {
+	Children []Job `json:"children"`
 }
 
-type jobInfo struct {
+type Job struct {
 	// Name of the job
 	Name string `json:"name"`
 
@@ -276,7 +276,7 @@ type jobInfo struct {
 	ApplicationAwareMode string `json:"applicationAwareMode"`
 
 	// Retention policy options.
-	RetentionPolicy retentionPolicy `json:"retentionPolicy"`
+	RetentionPolicy RetentionPolicy `json:"retentionPolicy"`
 
 	// Recovery only. Defines if the recovered machines must be powered on after the job is
 	// completed
@@ -302,22 +302,22 @@ type jobInfo struct {
 	ScreenshotVerificationMode string `json:"screenshotVerificationMode"`
 
 	// Source objects
-	Objects []object `json:"objects"`
+	Objects []Object `json:"objects"`
 
 	// Info about the transporters involved
-	Transporters []transporter `json:"transporters"`
+	Transporters []Transporter `json:"transporters"`
 
 	// Info about the storage involved
-	Storages []storage `json:"storages"`
+	Storages []Storage `json:"storages"`
 
 	// Job schedules
-	Schedules []schedule `json:"schedules"`
+	Schedules []Schedule `json:"schedules"`
 
 	// If the job is locked, lock reasons
 	LockReasons []interface{} `json:"lockReasons,omitempty"`
 }
 
-type object struct {
+type Object struct {
 	// VID of a job object
 	Vid string `json:"vid"`
 
@@ -404,7 +404,7 @@ type object struct {
 	// Bandwidth limit in bits/s
 	CrBandwidthLimit int64 `json:"crBandwidthLimit"`
 }
-type retentionPolicy struct {
+type RetentionPolicy struct {
 	Mode           string `json:"retentionMode"`
 	MaxCount       int    `json:"maxCount"`
 	KeepDayCount   int    `json:"keepDayCount"`
@@ -413,7 +413,7 @@ type retentionPolicy struct {
 	KeepYearCount  int    `json:"keepYearCount"`
 }
 
-type schedule struct {
+type Schedule struct {
 	// Enabled indicates ff a schedule is enabled
 	Enabled bool `json:"enabled"`
 

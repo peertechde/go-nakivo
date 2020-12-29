@@ -11,11 +11,11 @@ const (
 
 type JobService service
 
-type GroupInfo struct {
-	Children []groupInfo `json:"children"`
+type Groups struct {
+	Children []Group `json:"children"`
 }
 
-type groupInfo struct {
+type Group struct {
 	// Job group id
 	Id int `json:"id"`
 
@@ -83,10 +83,10 @@ type groupInfo struct {
 	ImmediateChildJobIds []int `json:"immediateChildJobIds"`
 
 	// Info about the transporters involved
-	Transporters []transporter `json:"transporters"`
+	Transporters []Transporter `json:"transporters"`
 
 	// Info about the storage involved
-	Storages []storage `json:"storages"`
+	Storages []Storage `json:"storages"`
 }
 
 type jobCount struct {
@@ -107,7 +107,7 @@ type hvTypeBackupCount struct {
 type hvTypeBackupHasRootDiskCount struct {
 }
 
-type transporter struct {
+type Transporter struct {
 	// IsAuto indicates if a transporter was assigned automatically
 	IsAuto bool `json:"isAuto"`
 
@@ -133,7 +133,7 @@ type transporter struct {
 	State string `json:"state"`
 }
 
-type storage struct {
+type Storage struct {
 	// Storage vid
 	Vid string `json:"vid"`
 
