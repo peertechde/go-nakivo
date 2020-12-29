@@ -37,7 +37,7 @@ type CanTry struct {
 	FailedAttempts int  `json:"failedAttempts"`
 }
 
-func (s *AuthenticationService) Login(ctx context.Context, username, password string, remember bool) (*Response, *http.Response, error) {
+func (s *AuthenticationService) Login(ctx context.Context, username, password string, remember bool) (*LoginInfo, *http.Response, error) {
 	request := Request{
 		Action: AuthenticationAction,
 		Method: "login",
@@ -50,12 +50,13 @@ func (s *AuthenticationService) Login(ctx context.Context, username, password st
 	if err != nil {
 		return nil, nil, err
 	}
-	r := Response{Data: &LoginInfo{}}
+	var loginInfo LoginInfo
+	r := Response{Data: &loginInfo}
 	resp, err := s.client.Do(ctx, req, &r)
 	if err != nil {
 		return nil, resp, err
 	}
-	return &r, resp, nil
+	return &loginInfo, resp, nil
 }
 
 func (s *AuthenticationService) IsLoggedIn(ctx context.Context) (*Response, *http.Response, error) {
