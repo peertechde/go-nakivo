@@ -16,11 +16,11 @@ type LoginInfo struct {
 	Reason            string   `json:"reason"`
 	FirstTime         bool     `json:"firstTime"`
 	ProductConfigured bool     `json:"productConfigured"`
-	UserInfo          userInfo `json:"userInfo"`
-	CanTry            canTry   `json:"canTry"`
+	UserInfo          UserInfo `json:"userInfo"`
+	CanTry            CanTry   `json:"canTry"`
 }
 
-type userInfo struct {
+type UserInfo struct {
 	Id                 int      `json:"id"`
 	Name               string   `json:"name"`
 	IsMasterAdmin      bool     `json:"isMasterAdmin"`
@@ -31,7 +31,7 @@ type userInfo struct {
 	FirstLoginRelative int      `json:"firstloginRelative"`
 }
 
-type canTry struct {
+type CanTry struct {
 	IsPossible     bool `json:"isPossible"`
 	WaitTimeLeft   int  `json:"waitTimeLeft"`
 	FailedAttempts int  `json:"failedAttempts"`
