@@ -492,7 +492,7 @@ type Schedule struct {
 	NextRunRelative int64 `json:"nextRunRelative"`
 }
 
-func (s *JobService) JobInfo(ctx context.Context, ids []int, clientTimeOffset int) (*Response, *http.Response, error) {
+func (s *JobService) JobInfo(ctx context.Context, ids []int, clientTimeOffset int) (*Jobs, *http.Response, error) {
 	request := Request{
 		Action: JobAction,
 		Method: "getJobInfo",
@@ -505,10 +505,11 @@ func (s *JobService) JobInfo(ctx context.Context, ids []int, clientTimeOffset in
 	if err != nil {
 		return nil, nil, err
 	}
-	r := Response{Data: &JobInfo{}}
+	var jobs Jobs
+	r := Response{Data: &jobs}
 	resp, err := s.client.Do(ctx, req, &r)
 	if err != nil {
 		return nil, resp, err
 	}
-	return &r, resp, nil
+	return &jobs, resp, nil
 }

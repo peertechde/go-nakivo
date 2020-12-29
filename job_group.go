@@ -166,7 +166,7 @@ type Storage struct {
 //
 // TODO: Currently limited to list ALL jobs in a group. To list a limited set of group, the first
 // element of the data element in the request should relflect a group id.
-func (s *JobService) List(ctx context.Context, clientTimeOffset int, collectAllChildJobs bool) (*Response, *http.Response, error) {
+func (s *JobService) List(ctx context.Context, clientTimeOffset int, collectAllChildJobs bool) (*Groups, *http.Response, error) {
 	request := Request{
 		Action: JobAction,
 		Method: "getGroupInfo",
@@ -179,10 +179,11 @@ func (s *JobService) List(ctx context.Context, clientTimeOffset int, collectAllC
 	if err != nil {
 		return nil, nil, err
 	}
-	r := Response{Data: &GroupInfo{}}
+	var groups Groups
+	r := Response{Data: &groups}
 	resp, err := s.client.Do(ctx, req, &r)
 	if err != nil {
 		return nil, resp, err
 	}
-	return &r, resp, nil
+	return &groups, resp, nil
 }
