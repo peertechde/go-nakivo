@@ -47,7 +47,7 @@ type service struct {
 	client *Client
 }
 
-type request struct {
+type Request struct {
 	// Action represents the action that is invoked.
 	Action string `json:"action"`
 
@@ -66,7 +66,7 @@ type request struct {
 	Data interface{} `json:"data"`
 }
 
-type response struct {
+type Response struct {
 	// Action represents the request action.
 	Action string `json:"action"`
 
@@ -104,7 +104,7 @@ func (err *APIError) Error() string {
 	return fmt.Sprintf("api: request failed with '%s' (%s)", err.Message, err.Cause)
 }
 
-func (c *Client) NewRequest(request *request) (*http.Request, error) {
+func (c *Client) NewRequest(request *Request) (*http.Request, error) {
 	r, err := json.Marshal(request)
 	if err != nil {
 		return nil, err
@@ -118,7 +118,7 @@ func (c *Client) NewRequest(request *request) (*http.Request, error) {
 	return req, nil
 }
 
-func (c *Client) Do(ctx context.Context, req *http.Request, response *response) (*http.Response, error) {
+func (c *Client) Do(ctx context.Context, req *http.Request, response *Response) (*http.Response, error) {
 	req = req.WithContext(ctx)
 
 	resp, err := c.httpClient.Do(req)

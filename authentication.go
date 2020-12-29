@@ -37,8 +37,8 @@ type canTry struct {
 	FailedAttempts int  `json:"failedAttempts"`
 }
 
-func (s *AuthenticationService) Login(ctx context.Context, username, password string, remember bool) (*response, *http.Response, error) {
-	request := request{
+func (s *AuthenticationService) Login(ctx context.Context, username, password string, remember bool) (*Response, *http.Response, error) {
+	request := Request{
 		Action: AuthenticationAction,
 		Method: "login",
 		Data:   []interface{}{username, password, remember},
@@ -50,7 +50,7 @@ func (s *AuthenticationService) Login(ctx context.Context, username, password st
 	if err != nil {
 		return nil, nil, err
 	}
-	r := response{Data: &LoginInfo{}}
+	r := Response{Data: &LoginInfo{}}
 	resp, err := s.client.Do(ctx, req, &r)
 	if err != nil {
 		return nil, resp, err
@@ -58,8 +58,8 @@ func (s *AuthenticationService) Login(ctx context.Context, username, password st
 	return &r, resp, nil
 }
 
-func (s *AuthenticationService) IsLoggedIn(ctx context.Context) (*response, *http.Response, error) {
-	request := request{
+func (s *AuthenticationService) IsLoggedIn(ctx context.Context) (*Response, *http.Response, error) {
+	request := Request{
 		Action: AuthenticationAction,
 		Method: "isLogged",
 		Type:   "rpc",
@@ -70,7 +70,7 @@ func (s *AuthenticationService) IsLoggedIn(ctx context.Context) (*response, *htt
 	if err != nil {
 		return nil, nil, err
 	}
-	r := response{}
+	r := Response{}
 	resp, err := s.client.Do(ctx, req, &r)
 	if err != nil {
 		return nil, resp, err
@@ -78,8 +78,8 @@ func (s *AuthenticationService) IsLoggedIn(ctx context.Context) (*response, *htt
 	return &r, resp, nil
 }
 
-func (s *AuthenticationService) Logout(ctx context.Context) (*response, *http.Response, error) {
-	request := request{
+func (s *AuthenticationService) Logout(ctx context.Context) (*Response, *http.Response, error) {
+	request := Request{
 		Action: AuthenticationAction,
 		Method: "logoutCurrentUser",
 		Type:   "rpc",
@@ -90,7 +90,7 @@ func (s *AuthenticationService) Logout(ctx context.Context) (*response, *http.Re
 	if err != nil {
 		return nil, nil, err
 	}
-	r := response{}
+	r := Response{}
 	resp, err := s.client.Do(ctx, req, &r)
 	if err != nil {
 		return nil, resp, err
