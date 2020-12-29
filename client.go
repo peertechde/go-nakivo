@@ -31,6 +31,7 @@ func NewClient(httpClient *http.Client, address string, port int) (*Client, erro
 	}
 	client.common.client = client
 	client.Authentication = (*AuthenticationService)(&client.common)
+	client.Job = (*JobService)(&client.common)
 
 	return client, nil
 }
@@ -41,6 +42,7 @@ type Client struct {
 
 	common         service
 	Authentication *AuthenticationService
+	Job            *JobService
 }
 
 type service struct {
