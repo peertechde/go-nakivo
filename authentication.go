@@ -12,29 +12,29 @@ const (
 type AuthenticationService service
 
 type LoginInfo struct {
-	Result            string   `json:"result,omitempty"`
-	Reason            string   `json:"reason,omitempty"`
-	FirstTime         bool     `json:"firstTime,omitempty"`
-	ProductConfigured bool     `json:"productConfigured,omitempty"`
-	UserInfo          userInfo `json:"userInfo,omitempty"`
-	CanTry            canTry   `json:"canTry,omitempty"`
+	Result            string   `json:"result"`
+	Reason            string   `json:"reason"`
+	FirstTime         bool     `json:"firstTime"`
+	ProductConfigured bool     `json:"productConfigured"`
+	UserInfo          userInfo `json:"userInfo"`
+	CanTry            canTry   `json:"canTry"`
 }
 
 type userInfo struct {
-	Id                 int      `json:"id,omitempty"`
-	Name               string   `json:"name,omitempty"`
-	IsMasterAdmin      bool     `json:"isMasterAdmin,omitempty"`
-	IsAdmin            bool     `json:"isAdmin,omitempty"`
-	Permissions        []string `json:"permissions,omitempty"`
-	Tid                string   `json:"tid,omitempty"`
-	Email              string   `json:"email,omitempty"`
-	FirstLoginRelative int      `json:"firstloginRelative,omitempty"`
+	Id                 int      `json:"id"`
+	Name               string   `json:"name"`
+	IsMasterAdmin      bool     `json:"isMasterAdmin"`
+	IsAdmin            bool     `json:"isAdmin"`
+	Permissions        []string `json:"permissions"`
+	Tid                string   `json:"tid"`
+	Email              string   `json:"email"`
+	FirstLoginRelative int      `json:"firstloginRelative"`
 }
 
 type canTry struct {
-	IsPossible     bool `json:"isPossible,omitempty"`
-	WaitTimeLeft   int  `json:"waitTimeLeft,omitempty"`
-	FailedAttempts int  `json:"failedAttempts,omitempty"`
+	IsPossible     bool `json:"isPossible"`
+	WaitTimeLeft   int  `json:"waitTimeLeft"`
+	FailedAttempts int  `json:"failedAttempts"`
 }
 
 func (s *AuthenticationService) Login(ctx context.Context, username, password string, remember bool) (*response, *http.Response, error) {

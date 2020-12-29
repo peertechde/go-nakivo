@@ -80,15 +80,15 @@ type response struct {
 	Type string `json:"type"`
 
 	// Message if the request failed.
-	Message string `json:"message,omitempty"`
+	Message string `json:"message"`
 
 	// Reference to the method where the problem occurred.
-	Where string `json:"where,omitempty"`
+	Where string `json:"where"`
 
 	// Cause of failure.
-	Cause string `json:"cause,omitempty"`
+	Cause string `json:"cause"`
 
-	Data interface{} `json:"data,omitempty"`
+	Data interface{} `json:"data"`
 }
 
 type APIError struct {
