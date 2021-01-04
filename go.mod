@@ -1,3 +1,3 @@
-module github.com/peertechorg/go-nakivo
+module github.com/peertechde/go-nakivo
 
 go 1.15
