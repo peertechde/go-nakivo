@@ -133,7 +133,7 @@ type Job struct {
 	DiskCount int `json:"diskCount"`
 
 	// The total size of source machines
-	SourcesSize int `json:"sourcesSize"`
+	SourcesSize int64 `json:"sourcesSize"`
 
 	// Checks if the job is enabled
 	IsEnabled bool `json:"isEnabled"`
@@ -151,7 +151,7 @@ type Job struct {
 	IsRemoved bool `json:"isRemoved"`
 
 	// The average job duration (in ms)
-	AverageDurationMs int `json:"averageDurationMs"`
+	AverageDurationMs int64 `json:"averageDurationMs"`
 
 	// The number of job runs to calculate average job duration
 	AverageDurationSampleCount int `json:"averageDurationSampleCount"`
@@ -164,7 +164,7 @@ type Job struct {
 	CrDate string `json:"crDate"`
 
 	// Relative timestamp (time passed from the job start run) of the current job run
-	CrDateRelative int `json:"crDateRelative"`
+	CrDateRelative int64 `json:"crDateRelative"`
 
 	// The number of machines queued for processing for the current job run
 	CrVmPlanned int `json:"crVmPlanned"`
